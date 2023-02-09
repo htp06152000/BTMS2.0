@@ -1,0 +1,26 @@
+
+
+@media(min-width: 768px) {
+    .news-input {
+        width: 50%;
+    }
+}
+
+.login {
+    width: 270px;
+    height: min-content;
+    padding: 20px;
+    border-radius: 15px;
+    background: #1b88bbcb;
+    justify-content: center;
+}
+
+.login img {
+    margin-bottom: 25px;
+    border-radius: 30px;
+    
+}
+
+.login form {
+    font-size: 15px;
+}
