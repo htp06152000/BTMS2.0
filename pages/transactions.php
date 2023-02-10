@@ -219,7 +219,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                         var requester_element = document.querySelector('#requester');
                         dselect( requester_element, {
                         search: true
-                         });
+                            });
                     </script>
             </div>
             </div>
@@ -276,7 +276,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             ?>
 
             <?php
-                $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 3");
+                $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 2");
                 $services = $get_ser->fetchall();
             ?>
                 
@@ -379,7 +379,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             ?>
 
             <?php
-                $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 2");
+                $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 3");
                 $services = $get_ser->fetchall();
             ?>
 

@@ -60,6 +60,8 @@ CREATE TABLE blotter (
   price varchar(4) NOT NULL,
   primary key (servicesID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
   
+  INSERT INTO `services` (`servicesID`, `services`, `price`) 
+  VALUES ('1', 'Barangay clearance', '25'), ('2', 'Certificate of Indigency', '25'), ('3', 'Business permit', '50');
   
 /*transaction*/
 CREATE TABLE transaction(
