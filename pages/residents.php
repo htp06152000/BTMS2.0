@@ -249,7 +249,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                             </div>
 
                             <div class="modal-body">
-                                   <div class="row g-3 mb-3">
+                                    <div class="row g-3 mb-3">
                                     <div class="col-md-4">
                                         <label for="residentFName" class="form-label fw-bold">First Name:</label>
                                         <input type="text" name="residentFName" id="residentFName" class="form-control" maxlength="255" required>

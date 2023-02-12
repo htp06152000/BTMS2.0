@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"
             
-        <div class="row py-3" >
+        <div class="row py-3">
             <div class="row py-1" style="margin-left: 260px; margin-right: 20px">
             <div class="col-12">
                 <div class="card rounded-10px" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
