@@ -30,9 +30,12 @@ $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 $html = '
 
-<p style="text-align:center;"><b  style="font-size:18px;">Republic of the Philippines</p><br>
-<P  style="font-size:16px; margin-top: -20px; text:bold;">Barangay Calumpang</p><br>
-<p  style="font-size:16px; text:bold;">Iloilo City</p></div>
+<div>
+	<h1 style="text-align:center; margin-bottom: -30px; font-size:20px;">Republic of the Philippines</h1><br>
+	<h4  style="font-size:12px; text-align:center; margin-bottom: -30px;">Barangay Calumpang</h4><br>
+	<h4  style="font-size:12px; text-align:center;">Iloilo City</h4>
+</div>
+
 
 
 
