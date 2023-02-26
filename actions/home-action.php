@@ -50,7 +50,7 @@
 			$_SESSION['messagetype'] = "danger";
 		
 		}
-		
+		redirect_to('payment');
 		}
 		
 		if ( isset($_POST['add-clearancess']) ) {
@@ -82,7 +82,8 @@
 			$_SESSION['messagetype'] = "danger";
 			
 			}
-			
+			redirect_to('payment');
+
 			}
 		
 			if ( isset($_POST['add-permitss']) ) {
@@ -117,5 +118,5 @@
 					$_SESSION['messagetype'] = "danger";
 				
 				}
-				
+				redirect_to('payment');
 				}
