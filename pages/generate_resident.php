@@ -1,3 +1,5 @@
+
+
 <?php if (isset($_GET['view']) ) : ?>
 
 
@@ -9,7 +11,8 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
 
 
 <?php
-require_once('resources/tcpdf/tcpdf.php');
+require_once('resources/tcpdf/examples/tcpdf_include.php');
+
 
 // create new PDF document
 $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -24,34 +27,63 @@ $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 	$pdf->setPrintHeader(false);  
 	$pdf->setPrintFooter(false);  
 	$pdf->SetAutoPageBreak(TRUE, 10);  
-	$pdf->SetFont('helvetica', '', 12);  
-	$pdf->AddPage(); //default A4
 
+// set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+// set some language-dependent strings (optional)
+if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+	require_once(dirname(__FILE__).'/lang/eng.php');
+	$pdf->setLanguageArray($l);
+}
+
+
+	$pdf->SetFont('times', '', 13);  
+	$pdf->AddPage(); //default A4
+	
+
+// set alpha to semi-transparency
+$pdf->setAlpha(0.1);
+
+
+// draw jpeg image
+$pdf->Image('resources/tcpdf/examples/images/calumpang.jfif', 30, 80, 150, 150, '', '', '', true, 72);
+
+// restore full opacity
+$pdf->setAlpha(1);
+
+$pdf->Image('resources/tcpdf/examples/images/calumpang.jfif', 20, 20, 30, 30, '', '', '', true, 72);
+$pdf->Image('resources/tcpdf/examples/images/sk.jpg', 160, 20, 25, 30, '', '', '', true, 72);
 
 $html = '
 
 
+<div>
+<p></p>
+
+<span style="text-align: center; font-size: 15;">
+Republic of the Philippines <br>
+City of Iloilo <br>
+Barangay Calumpang, Molo, Iloilo City <br></span>
+<b><h3 style="text-align: center;">OFFICE OF THE PUNONG BARANGAY </h3></b>
+<hr />
+<p></p>
 
 
-<div style="width:800px; height:600px; padding:20px; text-align:center; border: 10px solid #787878">
-<div style="width:750px; height:550px; padding:20px; text-align:center; border: 5px solid #787878">
-       <span style="font-size:50px; font-weight:bold">Certificate of Completion</span>
-       <br><br>
-       <span style="font-size:25px"><i>This is to certify that</i></span>
-       <br><br>
-       <span style="font-size:30px"><b>$student.getFullName()</b></span><br/><br/>
-       <span style="font-size:25px"><i>has completed the course</i></span> <br/><br/>
-       <span style="font-size:30px">$course.getName()</span> <br/><br/>
-       <span style="font-size:20px">with score of <b>$grade.getPoints()%</b></span> <br/><br/><br/><br/>
-       <span style="font-size:25px"><i>dated</i></span><br>
-      #set ($dt = $DateFormatter.getFormattedDate($grade.getAwardDate(), "MMMM dd, yyyy"))
-      <span style="font-size:30px">$dt</span>
+<h2 style="text-align: center;"><b>RESIDENT PROFILE</b></h2>
+
+<span style="font-size: 15px;">
+<p>Name:<b><span style="font-size: 17px;"> '.$residents["residentFName"].' '.$residents["residentMName"].' '.$residents["residentLName"].'</span></b></p>
+<p>Address: <b><span style="font-size: 17px;"> Zone '.$residents["residentZoneNumber"].' Calumpang, Molo, Iloilo City</span></b></p>
+<p>Age: <b><span style="font-size: 17px;"> '.$residents["residentFName"].' '.$residents["residentMName"].' '.$residents["residentLName"].'</span></b></p>
+<p>Date of Birth: <b><span style="font-size: 17px;"> '.date('F d, Y', strtotime($residents["residentBdate"])).'</span></b></p>
+<p>Gender: <b><span style="font-size: 17px;"> '.$residents["residentGender"].'</span></b></p>
+<p>Civil Status:  <b><span style="font-size: 17px;"> '.$residents["residentCivilStatus"].'</span></b></p>
+<p>Occupation:  <b><span style="font-size: 17px;"> '.$residents["residentOccupation"].'</span></b></p>
+<p>Contact Number:  <b><span style="font-size: 17px;"> '.$residents["residentContactNumber"].'</span></b></p>
+</span>
+
 </div>
-</div>
-
-
-
-
 
 ';
 // output the HTML content
@@ -64,7 +96,7 @@ $pdf->lastPage();
 
 //Close and output PDF document
 ob_end_clean();
-$pdf->Output('resident_profile.pdf', 'I');
+$pdf->Output('Resident Profile', 'I');
 
 //============================================================+
 // END OF FILE

@@ -1,7 +1,7 @@
 <?php include_once('./layout/sidebar.php');   ?>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"       
-       
+
         <div class="row py-3">
         <div class="row py-1" style="margin-left: 260px; margin-right: 20px">
             <div class="col-12">
@@ -27,7 +27,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, tr.*, s.services AS tod FROM transaction tr JOIN resident rs ON tr.residentID = rs.residentID JOIN services s ON tr.servicesID = s.servicesID WHERE s.servicesID = 2 ORDER BY dateRecorded ASC");
+                                <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, tr.*, s.services AS tod FROM transaction tr JOIN resident rs ON tr.residentID = rs.residentID JOIN services s ON tr.servicesID = s.servicesID WHERE s.servicesID = 3 ORDER BY dateRecorded ASC");
                                         foreach ($transaction as $transactions) : ?>                      
                                             <tr class="table-sm">
                                                 <td class="text-center"><?=$transactions["transactionID"]?></td>
@@ -38,7 +38,7 @@
                                                 <td class="text-center"><?=$transactions["pickupdate"] ?></td>
                                                 <td class="text-center font-weight-bold text-center"><?=$transactions["status"] ?></td>
                                                 <td class="text-center">
-                                                    <a href="<?=root_url('generate_permit')?>?view=<?=$residents['residentID']?>" title="Generate" class="btn btn-sm btn-success" ><i class="fi fi-rr-print"></i></a>
+                                                    <a href="<?=root_url('generate_permit')?>?view=<?=$transactions['transactionID']?>" title="Generate" class="btn btn-sm btn-success" ><i class="fi fi-rr-print"></i></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

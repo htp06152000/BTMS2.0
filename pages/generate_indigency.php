@@ -1,3 +1,5 @@
+
+
 <?php if (isset($_GET['view']) ) : ?>
 
 
@@ -9,7 +11,8 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
 
 
 <?php
-require_once('resources/tcpdf/tcpdf.php');
+require_once('resources/tcpdf/examples/tcpdf_include.php');
+
 
 // create new PDF document
 $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -24,94 +27,85 @@ $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 	$pdf->setPrintHeader(false);  
 	$pdf->setPrintFooter(false);  
 	$pdf->SetAutoPageBreak(TRUE, 10);  
-	$pdf->SetFont('helvetica', '', 12);  
-	$pdf->AddPage(); //default A4
 
+// set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+// set some language-dependent strings (optional)
+if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+	require_once(dirname(__FILE__).'/lang/eng.php');
+	$pdf->setLanguageArray($l);
+}
+
+
+	$pdf->SetFont('times', '', 16);  
+	$pdf->AddPage(); //default A4
+	
+
+	// set alpha to semi-transparency
+$pdf->setAlpha(0.1);
+
+
+// draw jpeg image
+$pdf->Image('resources/tcpdf/examples/images/calumpang.jfif', 30, 80, 150, 150, '', '', '', true, 72);
+
+// restore full opacity
+$pdf->setAlpha(1);
+
+$pdf->Image('resources/tcpdf/examples/images/calumpang.jfif', 20, 20, 30, 30, '', '', '', true, 72);
+$pdf->Image('resources/tcpdf/examples/images/sk.jpg', 160, 20, 25, 30, '', '', '', true, 72);
 
 $html = '
 
 
+<div>
+<p></p>
+<span style="text-align: center; font-size: 15;">
+Republic of the Philippines <br>
+City of Iloilo <br>
+Barangay Calumpang, Molo, Iloilo City <br></span>
+<b><h3 style="text-align: center;">OFFICE OF THE PUNONG BARANGAY </h3></b>
+<hr />
+<p></p>
 
 
-<body>
-<nobr><nowrap>
-<div class="pos" id="_0:0" style="top:0">
-<img name="_1100:850" src="page_001.jpg" height="1100" width="850" border="0" usemap="#Map"></div>
-<div class="pos" id="_303:106" style="top:106;left:303">
-<span id="_24.5" style=" font-family:Arial; font-size:24.5px; color:#000000">
-Republic of Phillipines</span>
-</div>
-<div class="pos" id="_255:143" style="top:143;left:255">
-<span id="_35.3" style=" font-family:Arial; font-size:35.3px; color:#000000">
-Barangay Calumpang</span>
-</div>
-<div class="pos" id="_384:185" style="top:185;left:384">
-<span id="_19.0" style=" font-family:Arial; font-size:19.0px; color:#000000">
-Iloilo City</span>
-</div>
-<div class="pos" id="_203:244" style="top:244;left:203">
-<span id="_27.2" style=" font-family:Times New Roman; font-size:27.2px; color:#000000">
-B A R A N G A Y  C L E A R A N C E</span>
-</div>
-<div class="pos" id="_100:289" style="top:289;left:100">
-<span id="_27.2" style=" font-family:Arial; font-size:27.2px; color:#000000">
-To Whom it may concern:</span>
-</div>
-<div class="pos" id="_150:332" style="top:332;left:150">
-<span id="_19.0" style=" font-family:Arial Narrow; font-size:19.0px; color:#000000">
-This is to certify that with residence and postal address at , Barangay Calumpang, </span>
-</div>
-<div class="pos" id="_100:355" style="top:355;left:100">
-<span id="_19.0" style=" font-family:Arial Narrow; font-size:19.0px; color:#000000">
-Iloilo City has no derogatory record files in our Barangay office.</span>
-</div>
-<div class="pos" id="_150:422" style="top:422;left:150">
-<span id="_19.0" style=" font-family:Arial Narrow; font-size:19.0px; color:#000000">
-The aboved-name individual who is a bonafide resident of this barangay is a person </span>
-</div>
-<div class="pos" id="_100:444" style="top:444;left:100">
-<span id="_19.0" style=" font-family:Arial Narrow; font-size:19.0px; color:#000000">
-of good moral character, peace-loving and civic minded citizen.</span>
-</div>
-<div class="pos" id="_150:511" style="top:511;left:150">
-<span id="_19.0" style=" font-family:Arial Narrow; font-size:19.0px; color:#000000">
-This certification/clearance is hereby issued in connection with the subject&#146;s </span>
-</div>
-<div class="pos" id="_100:533" style="top:533;left:100">
-<span id="_19.0" style=" font-family:Arial Narrow; font-size:19.0px; color:#000000">
-application for and for whatever legal purpose it may service him/her best, abd is valid for </span>
-</div>
-<div class="pos" id="_100:555" style="top:555;left:100">
-<span id="_19.0" style=" font-family:Arial Narrow; font-size:19.0px; color:#000000">
-six(6) from the date issued</span>
-</div>
-<div class="pos" id="_100:589" style="top:589;left:100">
-<span id="_19.0" style="font-weight:bold; font-family:Arial Narrow; font-size:19.0px; color:#000000">
-NOT VALID WITHOUT OFFICIAL SEAL.</span>
-</div>
-<div class="pos" id="_100:622" style="top:622;left:100">
-<span id="_19.0" style=" font-family:Arial Narrow; font-size:19.0px; color:#000000">
-Given this Friday, February 10, 2023.</span>
-</div>
-<div class="pos" id="_550:656" style="top:656;left:550">
-<span id="_21.7" style="font-weight:bold; font-family:Arial Narrow; font-size:21.7px; color:#000000">
-ROBERTO C. NI&#209;O JR.</span>
-</div>
-<div class="pos" id="_550:679" style="top:679;left:550">
-<span id="_21.7" style="font-weight:bold; font-family:Arial Narrow; font-size:21.7px; color:#000000">
-      <span id="_19.0" style="font-weight:normal; font-size:19.0px"> Punong Barangay</span></span>
-</div>
-<div class="pos" id="_100:704" style="top:704;left:100">
-<span id="_21.7" style=" font-family:Arial Narrow; font-size:21.7px; color:#000000">
-Specimen Signature of Applicant:</span>
-</div>
-<div class="pos" id="_100:730" style="top:730;left:100">
-<span id="_21.0" style=" font-family:Arial Narrow; font-size:21.0px; color:#000000">
-__________________________</span>
-</div>
-</nowrap></nobr>
-</body>
+<h1 style="text-align: center;"><b>CERTIFICATE OF INDIGENCY</b></h1>
 
+<p></p>
+
+<p style="text-indent: 25px;">
+		TO WHOM IT MAY CONCERN
+</p>
+
+<p style="text-indent: 25px;">
+
+		This is to certify that <b style="text-transform: uppercase;">'.$residents["residentFName"].' '.$residents["residentMName"].' '.$residents["residentLName"].', '.$residents["residentAge"].' </b>
+		of Barangay Calumpang, Molol, Iloilo City is one of the indigent in our Barangay. 
+</p>
+<p style="text-indent: 25px;">
+		This certification is being issued upon the request of the above-named person gor whatever legal purpose it may serve his/her best.
+</p>
+
+<p style="text-indent: 25px;">
+		Issued this <b>'.date("jS").'</b> day of <b>'.date("F") .'</b>, <b>'.date("Y").'</b>,
+		at the Office of the Punong Barangay, Barangay Calumpang, Molo, Iloilo City, Philippines.
+</p>
+ 
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+<div style="text-align: center;">
+<p>
+Roberto C. Niño Jr.<br>
+<b>PUNONG BARANGAY</b>
+</p>
+</div>
 
 ';
 // output the HTML content
@@ -124,7 +118,7 @@ $pdf->lastPage();
 
 //Close and output PDF document
 ob_end_clean();
-$pdf->Output('resident_profile.pdf', 'I');
+$pdf->Output('Certificate of Indigency', 'I');
 
 //============================================================+
 // END OF FILE

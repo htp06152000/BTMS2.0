@@ -234,7 +234,7 @@
             <!-- Modal footer -->
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-target="#add-modal" data-bs-toggle="modal">Back</button>
-        <button type="submit" class="btn btn-primary" name="add-clearancess">Proceed to payment</button>
+        <button type="submit" class="btn btn-primary" onclick="window.location.href='./actions/payment-actions.php';" name="add-clearancess">Proceed to payment</button>
         </div>
         </div>
     </div>
