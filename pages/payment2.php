@@ -49,7 +49,7 @@
             <a href="./">go to home</a>
         <?php else:?>
             <div>
-                <h2 class="fw-bolder" style="font-size: 60px; color:coral; text-transform: uppercase; ">Barangay Clearance</h2>
+                <h2 class="fw-bolder" style="font-size: 60px; color:coral; text-transform: uppercase; ">Business Permit</h2>
                 <h4 class="text-center fst-italic">Pay via Paypal click the pay button to pay</h4>
                 <h6 class="text-center">Make sure you have paypal account before proceeding</h6>
 

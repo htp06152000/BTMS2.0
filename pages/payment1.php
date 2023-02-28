@@ -6,7 +6,7 @@
         // paypal configurations
         $paypal_conf = [
             'cmd' => '_xclick', // use '_xclick' for purchase or pay now button
-            'email' => 'ferlynfrenal@gmail.com', // paypal emai where payments will be sent
+            'email' => 'ferlynfrenal@gmail.com', // paypal email where payments will be sent
             'return_url' => $site_url . '?paypal-response=successful',
             'cancel_url' => $site_url . '?paypal-response=cancelled',
             'notify_url' => $site_url
@@ -48,6 +48,12 @@
             <p></p>
             <a href="./">go to home</a>
         <?php else:?>
+            <div>
+                <h2 class="fw-bolder" style="font-size: 60px; color:coral; text-transform: uppercase; ">Barangay Indigency</h2>
+                <h4 class="text-center fst-italic">Pay via Paypal click the pay button to pay</h4>
+                <h6 class="text-center">Make sure you have paypal account before proceeding</h6>
+
+            </div>
             <form method="post" style="display:flex;margin-top:3em;">
                 <select name="donation-currency" id="currency" style="padding:0.5em 0.2em 0.5em 1em;font-size:1.3rem;border:none;border-radius:10px 0 0 10px;">
                     <option value="PHP">₱</option>
@@ -58,7 +64,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" height="20px"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
                 </button>
             </form>
-            <a class="btn btn-primary btn-sm" role="button" href="" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;">Back to top</a>
+            <a class="btn btn-primary btn-sm" role="button" href="<?=root_url('home')?>" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; margin-top: 10px;">Back to Home</a>
         <?php endif;?>
     </body>
 </html>
