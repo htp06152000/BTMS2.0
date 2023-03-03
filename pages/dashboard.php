@@ -1,4 +1,12 @@
-<?php if ( ! defined('ACCESS') ) die("Direct access not allowed."); ?>
+<?php if ( ! defined('ACCESS') ) die("Direct access not allowed.");?>
+<?php
+    if (user_is_loggedin()) {}
+    else {
+        $_SESSION['message'] = "Login First!";
+        $_SESSION['messagetype'] = "danger";
+
+        redirect_to("login");}
+?>
 <?php include_once('./layout/sidebar.php');   ?>
 
 

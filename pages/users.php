@@ -1,3 +1,11 @@
+<?php
+    if (user_is_loggedin()) {}
+    else {
+        $_SESSION['message'] = "Login First!";
+        $_SESSION['messagetype'] = "danger";
+
+        redirect_to("login");}
+?>
 <?php include_once('./layout/sidebar.php');   ?>
 <?php if (isset($_GET['edit']) ) : ?>
 

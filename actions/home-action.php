@@ -2,10 +2,10 @@
 
 	if ( isset($_POST['track']) ) {
 
-		$get_status = $DB->prepare("SELECT status FROM transaction WHERE transactionID= ? ");
-		$statuss = $get_status->fetchall();
+		$get_status = $DB->prepare("SELECT status FROM transaction WHERE transactionID = ? ");
+		$status = $get_status->fetchall();
 
-		$numbr = sanitize_input($_POST['tr-numbr']);
+		$numbr = sanitize_input($_POST['trackingnumber']);
 
 		$result = $DB->prepare("SELECT * FROM transaction WHERE transactionID = ? LIMIT 0, 1");	
 		$result->execute([ $numbr ]);
