@@ -3,7 +3,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <!-- Title ang login -->
-<div class="navbar fixed-top navbar-expand-lg bg-light navbar-light p-1" id="navbar">
+<div class="navbar fixed-top navbar-expand-lg bg-light navbar-light p-1">
         <div class="container">
                 <p class="navbar-brand text-dark mb-0 h1 animate__animated animate__fadeInRight animate__faster fw-bolder">
                         <img src="resources/images/calumpangs.jpg" alt="Logo"> Barangay Transaction Management System</p>
@@ -29,10 +29,10 @@
         </div>
 </nav>
 
-<section class="p-5"></section>
+<section class="p-5" id="navbar"></section>
 
 <!--Content-->
-<section class="text-dark p-5 p-lg-0 p-lg-5 text-start text-sm-start" style="height: 600px;">
+<section class="text-dark p-5 p-lg-0 p-lg-5 text-start text-sm-start" style="height: 600px;" >
         <div class="container" style="margin-top: 100px;">
                 <div class="d-sm-flex animate__animated animate__fadeInDown">
                         <img class="img-fluid w-25" src="resources/images/calumpang.jfif" alt="" style="border-radius: 20px;">

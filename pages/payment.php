@@ -6,7 +6,7 @@
         // paypal configurations
         $paypal_conf = [
             'cmd' => '_xclick', // use '_xclick' for purchase or pay now button
-            'email' => 'ferlynfrenal@gmail.com', // paypal email where payments will be sent
+            'email' => 'clientdanielbernal05@gmail.com', // paypal email where payments will be sent
             'return_url' => $site_url . '?paypal-response=successful',
             'cancel_url' => $site_url . '?paypal-response=cancelled',
             'notify_url' => $site_url
@@ -43,10 +43,11 @@
     <title>Pay with Paypal</title>
 </head>
     <body style="font-family:sans-serif;background-color:#cae5ff;display:flex;align-items:center;justify-content:center;height:95vh;flex-direction:column;">
-        <?php if(isset($_GET['paypal-response']) && $_GET['paypal-response']=="successful" ):?>
+        <?php if(isset($_GET['paypal-response']) && $_GET['paypal-response']=="successful" )
+        :?>
             <h1 style="font-size:3.3rem;margin-bottom:0;">Request & payment successfully submitted</h1>
             <p></p>
-            <a href="./">go to home</a>
+            <button name="add-clearancess">Go to Home</button>
         <?php else:?>
             <div>
                 <h2 class="fw-bolder" style="font-size: 60px; color:coral; text-transform: uppercase; ">Barangay Clearance</h2>

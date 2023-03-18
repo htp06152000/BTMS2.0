@@ -6,7 +6,7 @@
         // paypal configurations
         $paypal_conf = [
             'cmd' => '_xclick', // use '_xclick' for purchase or pay now button
-            'email' => 'ferlynfrenal@gmail.com', // paypal email where payments will be sent
+            'email' => 'clientdanielbernal05@gmail.com', // paypal email where payments will be sent
             'return_url' => $site_url . '?paypal-response=successful',
             'cancel_url' => $site_url . '?paypal-response=cancelled',
             'notify_url' => $site_url
