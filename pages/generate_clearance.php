@@ -41,6 +41,13 @@ $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 	$pdf->Image('resources/tcpdf/examples/images/calumpang.jfif', 20, 20, 30, 30, '', '', '', true, 72);
 	$pdf->Image('resources/tcpdf/examples/images/sk.jpg', 160, 20, 25, 30, '', '', '', true, 72);
 	
+	
+	$pdf->Image('resources/tcpdf/examples/images/box.jpg', 64, 123, 5, 5, '', '', '', true, 72);
+	$pdf->Image('resources/tcpdf/examples/images/box.jpg', 64, 135, 5, 5, '', '', '', true, 72);
+	$pdf->Image('resources/tcpdf/examples/images/box.jpg', 64, 146, 5, 5, '', '', '', true, 72);
+
+
+
 
 $html = '
 
@@ -61,11 +68,19 @@ Barangay Calumpang, Molo, Iloilo City <br></span>
 <p></p>
 <p style="text-indent: 25px;">
 
-		This is to certify that <b style="text-transform: uppercase;">'.$residents["residentFName"].' '.$residents["residentMName"].' '.$residents["residentLName"].', '.$residents["residentAge"].' </b>
-		years old and a resident in this barangay is known to be of good moral character and a law abiding citizen of the community.
+		This is to certify that <b style="text-transform: uppercase;">'.$residents["residentFName"].' '.$residents["residentMName"].' '.$residents["residentLName"].' </b>
+		is a resident of our barangay and is of legal age. Subject to the verification of the Lupong Tagamayapa, she/he has been found to have:
 </p>
-<p style="text-indent: 25px;">
-		It is further certified that he/she has no derogatory and or criminal record filed in this barangay.
+<p style="text-indent: 120px;">
+		No Derogatory Case
+</p>
+
+<p style="text-indent: 120px;">
+		With Derogatory Case
+</p>
+
+<p style="text-indent: 120px;">
+		Pending Derogatory Case
 </p>
 
 <p style="text-indent: 25px;">
@@ -74,8 +89,6 @@ Barangay Calumpang, Molo, Iloilo City <br></span>
 </p>
  
 
-<p></p>
-<p></p>
 <p></p>
 <p></p>
 <p></p>
@@ -89,8 +102,7 @@ Roberto C. Niño Jr.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
 </p>
 </div>
 
-<p></p>
-<p></p>
+
 
 <p>
 		<b>C.T.C. Number:</b> &nbsp;________________________________<br>

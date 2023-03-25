@@ -4,14 +4,14 @@ if ( isset($_POST['track']) ) {
 
 	$numbr = sanitize_input($_POST['tr-numbr']);
 
-	$result = $DB->prepare("SELECT * FROM transaction WHERE trackingnumber = ? LIMIT 0, 1");	
+	$result = $DB->prepare("SELECT * FROM transaction WHERE TransactionID = ? LIMIT 0, 1");	
 	$result->execute([ $numbr ]);
 	
 	$get_status = $DB->prepare("SELECT status FROM transaction WHERE TransactionID = ?");
 	$status = $get_status->fetchall();
 	
 	if ($result && $result->rowCount() > 0) {
-		$_SESSION['message'] 		= "Your Request is currently $status";
+		$_SESSION['message'] 		= "Your Request is currently";
 		$_SESSION['messagetype'] 	= "success";
 		redirect_to('home');
 	} else {

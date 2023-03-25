@@ -143,7 +143,7 @@
 ?>
 
 <?php
-    $get_ser = $DB->query("SELECT * FROM services");
+    $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 1");
     $services = $get_ser->fetchall();
 ?>
 
@@ -241,7 +241,7 @@
 </form>
 
 <?php
-    $get_ser = $DB->query("SELECT * FROM services ORDER BY services DESC");
+    $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 2");
     $services = $get_ser->fetchall();
 ?>
 
@@ -339,7 +339,7 @@
 </form>
 
 <?php
-    $get_ser = $DB->query("SELECT * FROM services ORDER BY price DESC");
+    $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 3");
     $services = $get_ser->fetchall();
 ?>
 
