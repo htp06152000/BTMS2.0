@@ -11,7 +11,7 @@ if ( isset($_POST['track']) ) {
 	$status = $get_status->fetchall();
 	
 	if ($result && $result->rowCount() > 0) {
-		$_SESSION['message'] 		= "Your Request is currently";
+		$_SESSION['message'] 		= "Your Request is currently ";
 		$_SESSION['messagetype'] 	= "success";
 		redirect_to('home');
 	} else {

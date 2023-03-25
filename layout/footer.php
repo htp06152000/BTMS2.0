@@ -5,10 +5,10 @@
     </main>
 <footer class="footer container-fluid" id="footer">
     <?php if ((isset($_SESSION['message']) || isset($_GET['message'])) && $pagetitle != "Login") { ?>
-        <div class="position-absolute" aria-live="polite" aria-atomic="true" style="min-height:200px;z-index:1;">
-            <div class="position-fixed" style="top:8em;right:0.3em;">
-                <div class="toast card-rounded animate__animated animate__bounceIn" role="alert" data-autohide="false" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header bg-info justify-content-between">
+        <div class="z-3 position-absolute" aria-live="polite" aria-atomic="true" style="min-height:200px;z-index:1;">
+            <div class="z-3 position-fixed" style="top:1.5em;right:0.3em;">
+                <div class="z-3 toast card-rounded animate__animated animate__bounceIn" role="alert" data-autohide="false" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header bg-transparent justify-content-between">
                         <div class="small font-weight-light text-<?=$_SESSION['messagetype']?>">
                             <i class="fas fa-bell"></i>
                             Notification.
