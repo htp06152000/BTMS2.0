@@ -7,12 +7,15 @@ if ( isset($_POST['track']) ) {
 	$result = $DB->prepare("SELECT * FROM transaction WHERE trackingnumber = ? LIMIT 0, 1");	
 	$result->execute([ $numbr ]);
 	
+	$get_status = $DB->prepare("SELECT status FROM transaction WHERE TransactionID = ?");
+	$status = $get_status->fetchall();
+	
 	if ($result && $result->rowCount() > 0) {
-		$_SESSION['message'] 		= "Found!";
-		$_SESSION['messagetype'] 	= "warning";
+		$_SESSION['message'] 		= "Your Request is currently $status";
+		$_SESSION['messagetype'] 	= "success";
 		redirect_to('home');
 	} else {
-		$_SESSION['message'] 		= "Incorrect credentials!";
+		$_SESSION['message'] 		= "No Request Found!";
 		$_SESSION['messagetype'] 	= "warning";
 	}
 }
@@ -116,3 +119,4 @@ if ( isset($_POST['track']) ) {
 				}
 				redirect_to('payment2');
 				}
+

@@ -1,14 +1,14 @@
 <?php
 
     if (isset($_POST['pay'])) {
-        $site_url = 'http://localhost/BTMS2.0/home.php'; // the url of your website
+        $site_url = 'http://localhost/BTMS2.0/home'; // the url of your website
         $enable_sandbox = false; // enable sandbox for test payments.
         // paypal configurations
         $paypal_conf = [
             'cmd' => '_xclick', // use '_xclick' for purchase or pay now button
             'email' => 'clientdanielbernal05@gmail.com', // paypal email where payments will be sent
-            'return_url' => $site_url . '?paypal-response=successful',
-            'cancel_url' => $site_url . '?paypal-response=cancelled',
+            'return_url' => $site_url ,
+            'cancel_url' => $site_url ,
             'notify_url' => $site_url
         ];
         // set data to be sent to paypal
@@ -45,7 +45,7 @@
     <body style="font-family:sans-serif;background-color:#cae5ff;display:flex;align-items:center;justify-content:center;height:95vh;flex-direction:column;">
         <?php if(isset($_GET['paypal-response']) && $_GET['paypal-response']=="successful" )
         :?>
-            <h1 style="font-size:3.3rem;margin-bottom:0;">Request & payment successfully submitted</h1>
+            <h1 style="font-size:3.3rem;margin-bottom:0;" >Request & payment successfully submitted</h1>
             <p></p>
             <button name="add-clearancess">Go to Home</button>
         <?php else:?>

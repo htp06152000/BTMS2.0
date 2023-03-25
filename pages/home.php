@@ -121,12 +121,11 @@
                         <h4 class="mb-3 mb-md-0 text-start" id="request">Request</h4>
 
                         <form method="post" class="input-group news-input ps-5">
-                                <input name="tr-numbr" type="text" class="form-control" placeholder="Enter code here">
+                                <input name="tr-numbr" type="text" class="form-control" placeholder="Enter code here" required>
                                 <button class="btn btn-success btn-md text-light" name="track" type="submit">Track</button>
                         </form>
                 </div>
         </div>
-
 </section>
 <div class="p-4">
         <div class="container">
@@ -455,4 +454,3 @@
 </form>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
