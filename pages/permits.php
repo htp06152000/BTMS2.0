@@ -44,7 +44,18 @@
                                                 <td class="text-center"><?=$transactions["business_name"] ?></td>
                                                 <td class="text-center"><?=$transactions["business_address"] ?></td>
                                                 <td class="text-center"><?=$transactions["pickupdate"] ?></td>
-                                                <td class="text-center font-weight-bold text-center"><?=$transactions["status"] ?></td>
+                                                <td class="text-center">
+                                                                
+                                                                <?php if($transactions['status']=='Ready to Pick Up'): ?>
+                                                                    <h5><span class="badge rounded-pill text-bg-warning">Ready to Pick Up</span></h5>
+                                                                <?php elseif($transactions['status']=='Pending'): ?>
+                                                                    <h5><span class="badge rounded-pill text-bg-danger">Pending</span></h5>
+                                                                <?php else: ?>
+                                                                    <h5><span class="badge rounded-pill text-bg-success">Released</span></h5>
+                                                                <?php endif ?>
+                                                                
+    
+                                                                </td>
                                                 <td class="text-center">
                                                     <a href="<?=root_url('generate_permit')?>?view=<?=$transactions['transactionID']?>" title="Generate" class="btn btn-sm btn-success" ><i class="fi fi-rr-print"></i></a>
                                                 </td>
