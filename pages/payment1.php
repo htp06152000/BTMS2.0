@@ -1,7 +1,7 @@
 <?php
 
     if (isset($_POST['pay'])) {
-        $site_url = 'http://localhost/BTMS2.0/home'; // the url of your website
+        $site_url = 'http://localhost/BTMS2.0/payment'; // the url of your website
         $enable_sandbox = false; // enable sandbox for test payments.
         // paypal configurations
         $paypal_conf = [

@@ -170,7 +170,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             </div>
                             </div>
-                     </div>
+                    </div>
                     </div>
 
             <?php 
@@ -182,26 +182,23 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                 $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 1");
                 $services = $get_ser->fetchall();
             ?>
-          
-        
             <script src="library/dselect.js"></script>
             
 <!-- add modal for clearance -->
 <form method="POST" class="modal fade" id="add-modal-clearance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
   <div class="modal-dialog modal-dialog-scrollable">
 
-     <!-- Modal Content -->
+<!-- Modal Content -->
     <div class="modal-content">
-      <div class="modal-header bg-success text-white">
+    <div class="modal-header bg-success text-white">
 
-         <!-- Modal Header -->
+<!-- Modal Header -->
         <h5 class="modal-title">Add Barangay Clearance Request</h5>
         <button type="button" class="btn-close" data-bs-target="#add-modal" data-bs-toggle="modal"></button>
-      </div>
+    </div>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-
+<!-- Modal body -->
+    <div class="modal-body">
             <div class="mb-3">
                 <div class="form-group">
                 <label for="tod" class="form-label fw-bold">Type of Document:</label>

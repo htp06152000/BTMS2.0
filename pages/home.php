@@ -5,17 +5,17 @@
 <!-- Title ang login -->
 <div class="navbar fixed-top navbar-expand-lg bg-light navbar-light p-1 z-2">
         <div class="container">
-                <p class="navbar-brand text-dark mb-0 h1 animate__animated animate__fadeInRight animate__faster fw-bolder">
+                <p class="navbar-brand text-dark mb-0 h1 animate__animated animate__fadeInDown animate__faster fw-bolder">
                         <img src="resources/images/calumpangs.jpg" alt="Logo"> Barangay Transaction Management System</p>
 
-                <a href="<?=root_url("login")?>" class="btn btn-primary animate__animated animate__zoomIn" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px; width: 150px; margin-right: -30px;" role="button">Login</a>
+                <a href="<?=root_url("login")?>" class="btn btn-primary animate__animated animate__fadeInDown" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px; width: 150px; margin-right: -30px;" role="button">Login</a>
         </div>
 </div>
 
 <!-- Navbar -->
 <nav id="nav" class="navbar fixed-top navbar-expand-lg bg-primary navbar-dark p-2 z-2" style="box-shadow: 0rem 0rem 0.5rem 0rem; margin-top:67px;"> 
         <div class="container">
-                <ul class="nav justify-content-start animate__animated animate__fadeInLeft animate__faster">
+                <ul class="nav justify-content-start animate__animated animate__fadeInDown animate__faster">
                         <li class="nav-item">
                                 <a href="#" class="nav-link text-light h6">Home</a>
                         </li>
@@ -34,7 +34,7 @@
 <!--Content-->
 <section class="text-dark p-5 p-lg-0 p-lg-5 text-start text-sm-start" style="height: 600px;" >
         <div class="container" style="margin-top: 100px;">
-                <div class="d-sm-flex animate__animated animate__fadeInDown">
+                <div class="d-sm-flex">
                         <img class="img-fluid w-25" src="resources/images/calumpang.jfif" alt="" style="border-radius: 20px;">
 
                         <div>
@@ -121,7 +121,7 @@
                         <h4 class="mb-3 mb-md-0 text-start" id="request">Request</h4>
 
                         <form method="post" class="input-group news-input ps-5">
-                                <input name="tr-numbr" type="text" class="form-control" placeholder="Enter code here" required>
+                                <input name="tr-number" type="text" class="form-control" placeholder="Enter code here" required>
                                 <button class="btn btn-success btn-md text-light" name="track" type="submit">Track</button>
                         </form>
                 </div>

@@ -143,7 +143,7 @@ $get_blotters->execute([ $_GET['edit'] ]);  ?>
 
     <?php if (isset($_GET['view']) ) : ?>
     
-    <!-- Edit datas from Tables -->
+    <!-- view datas from Tables -->
     <?php $get_blotters = $DB->prepare("SELECT * FROM blotter WHERE blotterID = ? LIMIT 0, 1");
     $get_blotters->execute([ $_GET['view'] ]);  ?>
     
