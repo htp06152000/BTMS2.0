@@ -8,7 +8,7 @@
                 <p class="navbar-brand text-dark mb-0 h1 animate__animated animate__fadeInDown animate__faster fw-bolder">
                         <img src="resources/images/calumpangs.jpg" alt="Logo"> Barangay Transaction Management System</p>
 
-                <a href="<?=root_url("login")?>" class="btn btn-primary animate__animated animate__fadeInDown" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px; width: 150px; margin-right: -30px;" role="button">Login</a>
+                <a href="<?=root_url("login")?>" class="btn btn-primary animate__animated animate__fadeInDown animate_faster" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px; width: 150px; margin-right: -30px;" role="button">Login</a>
         </div>
 </div>
 
