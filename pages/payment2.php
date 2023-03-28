@@ -1,14 +1,15 @@
 <?php
 
     if (isset($_POST['pay'])) {
-        $site_url = 'http://localhost/BTMS2.0/home'; // the url of your website
+        $site_url = 'http://localhost/BTMS2.0/payment2'; // the url of your website
         $enable_sandbox = false; // enable sandbox for test payments.
+        $success = sanitize_input($_GET['trackingnumber']);
         // paypal configurations
         $paypal_conf = [
             'cmd' => '_xclick', // use '_xclick' for purchase or pay now button
             'email' => 'clientdanielbernal05@gmail.com', // paypal email where payments will be sent
-            'return_url' => $site_url ,
-            'cancel_url' => $site_url ,
+            'return_url' => $site_url. '?paypal-response=successful&trackingnumber='.$success,
+            'cancel_url' => $site_url. '?paypal-response=cancelled' ,
             'notify_url' => $site_url
         ];
         // set data to be sent to paypal
@@ -32,6 +33,9 @@
 
 ?>
 
+<?php
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,10 +47,9 @@
     <title>Pay with Paypal</title>
 </head>
     <body style="font-family:sans-serif;background-color:#cae5ff;display:flex;align-items:center;justify-content:center;height:95vh;flex-direction:column;">
-        <?php if(isset($_GET['paypal-response']) && $_GET['paypal-response']=="successful" ):?>
-            <h1 style="font-size:3.3rem;margin-bottom:0;">Request & payment successfully submitted</h1>
-            <p></p>
-            <a href="./">go to home</a>
+        <?php if(isset($_GET['paypal-response']) && $_GET['paypal-response']=="successful" ) :
+            $nmbr = sanitize_input($_GET['trackingnumber']);
+            redirect_to('payment-action?trackingnumber='.$nmbr.'&status=Paid') ?>
         <?php else:?>
             <div>
                 <h2 class="fw-bolder" style="font-size: 60px; color:coral; text-transform: uppercase; ">Business Permit</h2>

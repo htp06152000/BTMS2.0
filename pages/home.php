@@ -147,6 +147,10 @@
     $services = $get_ser->fetchall();
 ?>
 
+<?php
+    $trcknm = rand(10000,99999);
+?>
+
 <script src="library/dselect.js"></script>
 
 <!-- add modal for clearance -->
@@ -164,6 +168,21 @@
 
         <!-- Modal body -->
         <div class="modal-body">
+
+        <div class="mb-3">
+                <div class="form-group">
+                    <label for="trackingnumber" class="form-label fw-bold">Tracking Number:</label>
+                    <input type="text" value="<?php echo $trcknm;?>-<?php function rand_strings( $length ) {  
+                                $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";  
+                                $size = strlen( $chars );    
+                                    for( $i = 0; $i < $length; $i++ ) {  
+                                $str= $chars[ rand( 0, $size - 1 ) ];  
+                                    echo $str;
+                                }  
+                                    }  
+				rand_strings( 5 ); ?>" class="form-control" name="trackingnumber" id="trackingnumber" placeholder="" maxlength="11" readonly>
+                </div>
+            </div>
 
             <div class="mb-3">
                 <div class="form-group">
@@ -219,7 +238,7 @@
             <div class="mb-3">
                 <div class="form-group">
                     <label for="status" class="form-label fw-bold">Status:</label>
-                    <input type="text" value="Pending" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
+                    <input type="text" value="Unpaid" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
                 </div>
             </div>
 
@@ -245,23 +264,42 @@
     $services = $get_ser->fetchall();
 ?>
 
+<?php
+    $trcknm = rand(10000,99999);
+?>
+
 <script src="library/dselect.js"></script>
 
 <!-- add modal for indigency -->
 <form method="POST" class="modal fade" id="add-modal-indigency" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-  <div class="modal-dialog modal-dialog-scrollable">
+<div class="modal-dialog modal-dialog-scrollable">
 
-     <!-- Modal Content -->
+    <!-- Modal Content -->
     <div class="modal-content">
-      <div class="modal-header bg-info text-white">
+    <div class="modal-header bg-info text-white">
 
-         <!-- Modal Header -->
+        <!-- Modal Header -->
         <h5 class="modal-title">Add Certificate of Indigency Request</h5>
         <button type="button" class="btn-close" data-bs-target="#add-modal" data-bs-toggle="modal"></button>
-      </div>
+    </div>
 
-      <!-- Modal body -->
-      <div class="modal-body">
+    <!-- Modal body -->
+    <div class="modal-body">
+
+            <div class="mb-3">
+                <div class="form-group">
+                    <label for="trackingnumber" class="form-label fw-bold">Tracking Number:</label>
+                    <input type="text" value="<?php echo $trcknm;?>-<?php function rand_stringss( $length ) {  
+                                $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";  
+                                $size = strlen( $chars );    
+                                    for( $i = 0; $i < $length; $i++ ) {  
+                                $str= $chars[ rand( 0, $size - 1 ) ];  
+                                    echo $str;
+                                }  
+                                    }  
+				rand_stringss( 5 ); ?>" class="form-control" name="trackingnumber" id="trackingnumber" placeholder="" maxlength="11" readonly>
+                </div>
+            </div>
 
             <div class="mb-3">
                 <div class="form-group">
@@ -288,7 +326,7 @@
                         var requester1_element = document.querySelector('#requester1');
                         dselect( requester1_element, {
                         search: true
-                         });
+                        });
                     </script>
             </div>
             </div>
@@ -317,7 +355,7 @@
             <div class="mb-3">
                 <div class="form-group">
                     <label for="status" class="form-label fw-bold">Status:</label>
-                    <input type="text" value="Pending" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
+                    <input type="text" value="Unpaid" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
                 </div>
             </div>
 
@@ -343,7 +381,11 @@
     $services = $get_ser->fetchall();
 ?>
 
-<form method="POST" class="modal" id="add-modal-permit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+<?php
+    $trcknm = rand(10000,99999);
+?>
+
+<form method="POST" class="modal fade" id="add-modal-permit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
   <div class="modal-dialog modal-dialog-scrollable">
 
      <!-- Modal Content -->
@@ -357,6 +399,21 @@
 
       <!-- Modal body -->
       <div class="modal-body">
+
+            <div class="mb-3">
+                <div class="form-group">
+                    <label for="trackingnumber" class="form-label fw-bold">Tracking Number:</label>
+                    <input type="text" value="<?php echo $trcknm;?>-<?php function rand_stringsss( $length ) {  
+                                $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";  
+                                $size = strlen( $chars );    
+                                    for( $i = 0; $i < $length; $i++ ) {  
+                                $str= $chars[ rand( 0, $size - 1 ) ];  
+                                    echo $str;
+                                }  
+                                    }  
+				rand_stringsss( 5 ); ?>" class="form-control" name="trackingnumber" id="trackingnumber" placeholder="" maxlength="11" readonly>
+                </div>
+            </div>
 
             <div class="mb-3">
                 <div class="form-group">
@@ -433,7 +490,7 @@
             <div class="mb-3">
                 <div class="form-group">
                     <label for="status" class="form-label fw-bold">Status:</label>
-                    <input type="text" value="Pending" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
+                    <input type="text" value="Unpaid" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
                 </div>
             </div>
 

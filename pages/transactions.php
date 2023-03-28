@@ -53,6 +53,8 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             <div class="form-group">
                 <label for="status" class="form-label fw-bold">Request Status:</label>
                 <select name="status" id="status" class="form-select">
+                    <option <?=$transaction['status']=='Paid' ? 'selected' : ''?> value="Paid">Paid</option>
+                    <option <?=$transaction['status']=='Unpaid' ? 'selected' : ''?> value="Unpaid">Unpaid</option>
                     <option <?=$transaction['status']=='Pending' ? 'selected' : '' ?> value="Pending" >Pending</option>
                     <option <?=$transaction['status']=='Ready to Pick Up' ? 'selected' : '' ?> value="Ready to Pick Up" >Ready to Pick Up</option>
                     <option <?=$transaction['status']=='Released' ? 'selected' : '' ?> value="Released" >Released</option>
@@ -99,6 +101,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                                         <table id="myTable" class="table table-striped table-hover table-bordered">
                                             <thead>
                                                 <tr class="table-sm text-center">
+                                                    <th class="text-center">Tracking #</th>
                                                     <th class="text-center">Transaction ID</th>
                                                     <th class="text-center">Requestor</th>
                                                     <th class="text-center">Type of Document</th>
@@ -112,6 +115,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                                                 <?php $transaction = $DB->query("SELECT concat(rs.residentFName,' ',rs.residentMName,' ',rs.residentLName) AS requester, tr.*, s.services AS tod FROM transaction tr JOIN resident rs ON tr.residentID = rs.residentID JOIN services s ON tr.servicesID = s.servicesID ORDER BY status ASC");
                                                     foreach ($transaction as $transactions) : ?>                      
                                                         <tr class="table-sm">
+                                                            <td class="text-center"><?=$transactions['trackingnumber']?></td>
                                                             <td class="text-center"><?=$transactions["transactionID"]?></td>
                                                             <td class="text-center"><?=$transactions["requester"]?></td>
                                                             <td class="text-center"><?=$transactions["tod"]?></td>
@@ -120,14 +124,16 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                                                             <td class="text-center">
                                                                 
                                                             <?php if($transactions['status']=='Ready to Pick Up'): ?>
-																<h5><span class="badge rounded-pill text-bg-warning">Ready to Pick Up</span></h5>
+																<h5><span class="badge rounded-pill text-bg-info">Ready to Pick Up</span></h5>
 															<?php elseif($transactions['status']=='Pending'): ?>
-																<h5><span class="badge rounded-pill text-bg-danger">Pending</span></h5>
-															<?php else: ?>
+																<h5><span class="badge rounded-pill text-bg-warning">Pending</span></h5>
+															<?php elseif($transactions['status']=='Released'): ?>
 																<h5><span class="badge rounded-pill text-bg-success">Released</span></h5>
+                                                            <?php elseif($transactions['status']=='Paid'): ?>
+                                                                <h5><span class="badge rounded-pill text-bg-primary">Paid</span></h5>
+                                                            <?php else : ?>
+                                                                <h5><span class="badge rounded-pill text-bg-secondary">Unpaid</span></h5>
 															<?php endif ?>
-                                                            
-
                                                             </td>
                                                             <td class="text-center">
                                                                 <a href="<?=root_url('transactions')?>?edit=<?=$transactions['transactionID']?>" class="btn btn-sm btn-primary">
@@ -182,6 +188,10 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                 $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 1");
                 $services = $get_ser->fetchall();
             ?>
+
+<?php
+    $trcknm = rand(10000,99999);
+?>
             <script src="library/dselect.js"></script>
             
 <!-- add modal for clearance -->
@@ -199,6 +209,22 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
 
 <!-- Modal body -->
     <div class="modal-body">
+
+    <div class="mb-3">
+                <div class="form-group">
+                    <label for="trackingnumber" class="form-label fw-bold">Tracking Number:</label>
+                    <input type="text" value="<?php echo $trcknm;?>-<?php function rand_string( $length ) {  
+                                $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";  
+                                $size = strlen( $chars );    
+                                    for( $i = 0; $i < $length; $i++ ) {  
+                                $str= $chars[ rand( 0, $size - 1 ) ];  
+                                    echo $str;
+                                }  
+                                    }  
+				rand_string( 5 ); ?>" class="form-control" name="trackingnumber" id="trackingnumber" placeholder="" maxlength="11" readonly>
+                </div>
+            </div>
+
             <div class="mb-3">
                 <div class="form-group">
                 <label for="tod" class="form-label fw-bold">Type of Document:</label>
@@ -253,7 +279,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             <div class="mb-3">
                 <div class="form-group">
                     <label for="status" class="form-label fw-bold">Status:</label>
-                    <input type="text" value="Pending" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
+                    <input type="text" value="Unpaid" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
                 </div>
             </div>
 
@@ -284,7 +310,8 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                 $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 2");
                 $services = $get_ser->fetchall();
             ?>
-                
+            <?php $trcknm = rand(10000,99999);?>
+
             <script src="library/dselect.js"></script>
 
 <!-- add modal for indigency -->
@@ -302,6 +329,21 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
 
       <!-- Modal body -->
       <div class="modal-body">
+
+      <div class="mb-3">
+                <div class="form-group">
+                    <label for="trackingnumber" class="form-label fw-bold">Tracking Number:</label>
+                    <input type="text" value="<?php echo $trcknm;?>-<?php function rand_strings( $length ) {  
+                                $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";  
+                                $size = strlen( $chars );    
+                                    for( $i = 0; $i < $length; $i++ ) {  
+                                $str= $chars[ rand( 0, $size - 1 ) ];  
+                                    echo $str;
+                                }  
+                                    }  
+				rand_strings( 5 ); ?>" class="form-control" name="trackingnumber" id="trackingnumber" placeholder="" maxlength="11" readonly>
+                </div>
+            </div>
 
             <div class="mb-3">
                 <div class="form-group">
@@ -357,7 +399,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             <div class="mb-3">
                 <div class="form-group">
                     <label for="status" class="form-label fw-bold">Status:</label>
-                    <input type="text" value="Pending" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
+                    <input type="text" value="Unpaid" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
                 </div>
             </div>
 
@@ -387,6 +429,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                 $get_ser = $DB->query("SELECT * FROM services WHERE servicesID = 3");
                 $services = $get_ser->fetchall();
             ?>
+            <?php $trcknm = rand(10000,99999);?>
 
                 
             <script src="library/dselect.js"></script>
@@ -406,6 +449,21 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
 
       <!-- Modal body -->
       <div class="modal-body">
+
+      <div class="mb-3">
+                <div class="form-group">
+                    <label for="trackingnumber" class="form-label fw-bold">Tracking Number:</label>
+                    <input type="text" value="<?php echo $trcknm;?>-<?php function rand_stringss( $length ) {  
+                                $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";  
+                                $size = strlen( $chars );    
+                                    for( $i = 0; $i < $length; $i++ ) {  
+                                $str= $chars[ rand( 0, $size - 1 ) ];  
+                                    echo $str;
+                                }  
+                                    }  
+				rand_stringss( 5 ); ?>" class="form-control" name="trackingnumber" id="trackingnumber" placeholder="" maxlength="11" readonly>
+                </div>
+            </div>
 
             <div class="mb-3">
                 <div class="form-group">
@@ -432,7 +490,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
                         var requester2_element = document.querySelector('#requester2');
                         dselect( requester2_element, {
                         search: true
-                         });
+                        });
                     </script>
             </div>
             </div>
@@ -482,7 +540,7 @@ $get_transaction->execute([ $_GET['edit'] ]);  ?>
             <div class="mb-3">
                 <div class="form-group">
                     <label for="status" class="form-label fw-bold">Status:</label>
-                    <input type="text" value="Pending" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
+                    <input type="text" value="Unpaid" class="form-control" name="status" id="status" placeholder="Status" maxlength="255" readonly>
                 </div>
             </div>
 
