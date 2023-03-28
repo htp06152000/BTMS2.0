@@ -40,12 +40,13 @@ $status =  sanitize_input( $_POST['status'] );
 $purpose = sanitize_input( $_POST['purpose'] );
 $dateRecorded = sanitize_input( $_POST['dateRecorded'] );
 $amount = sanitize_input( $_POST['amount'] );
+$trackingnumber = sanitize_input($_POST['trackingnumber']);
 
-$update_transactions = $DB->prepare("INSERT INTO transaction ( residentID, servicesID, pickupdate, status, purpose, dateRecorded, amount) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$update_transactions = $DB->prepare("INSERT INTO transaction ( residentID, servicesID, pickupdate, status, purpose, dateRecorded, amount, trackingnumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 try {
     $DB->beginTransaction();
-    if( $update_transactions->execute( [$requester, $tod, $pickupdate, $status, $purpose, $dateRecorded, $amount] ) ) {
+    if( $update_transactions->execute( [$requester, $tod, $pickupdate, $status, $purpose, $dateRecorded, $amount, $trackingnumber] ) ) {
         $DB->commit();
         $_SESSION['message'] = "Request successfully added";
         $_SESSION['messagetype'] = "success";
@@ -72,12 +73,13 @@ $status =  sanitize_input( $_POST['status'] );
 $purpose = sanitize_input( $_POST['purpose'] );
 $dateRecorded = sanitize_input( $_POST['dateRecorded'] );
 $amount = sanitize_input( $_POST['amount'] );
+$trackingnumber = sanitize_input($_POST['trackingnumber']);
 
-$update_transactions = $DB->prepare("INSERT INTO transaction ( residentID, servicesID, pickupdate, status, purpose, dateRecorded, amount) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$update_transactions = $DB->prepare("INSERT INTO transaction ( residentID, servicesID, pickupdate, status, purpose, dateRecorded, amount, trackingnumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 try {
     $DB->beginTransaction();
-    if( $update_transactions->execute( [$requester, $tod, $pickupdate, $status, $purpose, $dateRecorded, $amount] ) ) {
+    if( $update_transactions->execute( [$requester, $tod, $pickupdate, $status, $purpose, $dateRecorded, $amount, $trackingnumber] ) ) {
         $DB->commit();
         $_SESSION['message'] = "Request successfully added";
         $_SESSION['messagetype'] = "success";
@@ -107,12 +109,13 @@ try {
         $purpose = sanitize_input( $_POST['purpose'] );
         $dateRecorded = sanitize_input( $_POST['dateRecorded'] );
         $amount = sanitize_input( $_POST['amount'] );
-        
-        $update_transactions = $DB->prepare("INSERT INTO transaction (residentID, servicesID, business_name, business_address, type_of_business, pickupdate, status, purpose, dateRecorded, amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $trackingnumber = sanitize_input($_POST['trackingnumber']);
+
+        $update_transactions = $DB->prepare("INSERT INTO transaction ( residentID, servicesID, pickupdate, status, purpose, dateRecorded, amount, trackingnumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         
         try {
             $DB->beginTransaction();
-            if( $update_transactions->execute( [$requester, $tod, $business_name, $business_address, $type_of_business, $pickupdate, $status, $purpose, $dateRecorded, $amount] ) ) {
+            if( $update_transactions->execute( [$requester, $tod, $pickupdate, $status, $purpose, $dateRecorded, $amount, $trackingnumber] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Request successfully added";
                 $_SESSION['messagetype'] = "success";
