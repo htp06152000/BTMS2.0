@@ -11,7 +11,7 @@
 ?>
 
 <section class="row justify-content-center vh-100">
-    <div class="card justify-content-center text-center bg-info text-light" style="width: 45rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; margin-top: 110px; width: 350px; border-radius: 5px; height: 20rem;">
+    <div class="card justify-content-center text-center bg-light text-light" style="width: 45rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; margin-top: 110px; width: 350px; border-radius: 5px; height: 20rem;">
         <div class="card-body">
             <p class="fw-bold">You paid your request and the current status is currently             
             <?php if($resulta['status']=='Ready to Pick Up'): ?>

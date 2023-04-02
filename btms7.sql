@@ -32,6 +32,7 @@ CREATE TABLE resident (
   residentZoneNumber varchar(5) NOT NULL,
   residentContactNumber varchar (11) NOT NULL,
   residentOccupation varchar(15) NOT NULL,
+  residentImage varchar (255) DEFAULT NULL, 
   primary key (residentID),
   foreign key (user_ID) references users(user_ID))ENGINE=InnoDB DEFAULT CHARSET=latin1;
   

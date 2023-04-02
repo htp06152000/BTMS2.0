@@ -9,7 +9,7 @@
             'cmd' => '_xclick', // use '_xclick' for purchase or pay now button
             'email' => 'clientdanielbernal05@gmail.com', // paypal email where payments will be sent
             'return_url' => $site_url. '?paypal-response=successful&trackingnumber='.$success,
-            'cancel_url' => $site_url. '?paypal-response=cancelled' ,
+            'cancel_url' => $site_url. '?paypal-response=cancelled&trackingnumber='.$success,
             'notify_url' => $site_url
         ];
         // set data to be sent to paypal
@@ -49,7 +49,12 @@
     <body style="font-family:sans-serif;background-color:#cae5ff;display:flex;align-items:center;justify-content:center;height:95vh;flex-direction:column;">
         <?php if(isset($_GET['paypal-response']) && $_GET['paypal-response']=="successful" ) :
             $nmbr = sanitize_input($_GET['trackingnumber']);
-            redirect_to('payment-action?trackingnumber='.$nmbr.'&status=Paid') ?>
+            redirect_to('payment-action?trackingnumber='.$nmbr.'&status=Paid');
+            
+            elseif(isset($_GET['paypal-response']) && $_GET['paypal-response']=="cancelled" ) :
+                $nmbrs = sanitize_input($_GET['trackingnumber']);
+                redirect_to('cancel?trackingnumber='.$nmbrs)
+            ?>
         <?php else:?>
             <div>
                 <h2 class="fw-bolder" style="font-size: 60px; color:coral; text-transform: uppercase; ">Business Permit</h2>
@@ -62,12 +67,12 @@
                     <option value="PHP">₱</option>
                     <option value="USD">$</option>
                 </select>
-                <input type="number" name="donation-amount" id="amount" value="0.50" style="border:0;padding:0.3em 0.3em 0.3em 0.5em;font-size:18px;font-weight:bold;" />
+                <input type="number" name="donation-amount" id="amount" value="0.50" style="border:0;padding:0.3em 0.3em 0.3em 0.5em;font-size:18px;font-weight:bold;" readonly/>
                 <button type="submit" name="pay" style="background-color:#0027c1;border:none;border-radius:0 10px 10px 0;padding:0.3em 1.5em 0.3em 1.2em;color:#f1f1f1;cursor:pointer;">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" height="20px"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
                 </button>
-            </form>
-            <a class="btn btn-primary btn-sm" role="button" href="<?=root_url('home')?>" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; margin-top: 10px;">Back to Home</a>
+            </form><br><?php $nmbrs = sanitize_input($_GET['trackingnumber']); ?>
+            <a class="btn btn-primary btn-sm" role="button" href="<?=root_url('cancel?trackingnumber='.$nmbrs)?>">Back to Home</a>
         <?php endif;?>
     </body>
 </html>

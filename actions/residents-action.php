@@ -13,12 +13,24 @@
         $residentContactNumber = sanitize_input($_POST['residentContactNumber'] ); 
         $residentOccupation = sanitize_input($_POST['residentOccupation'] );
         $residentID = sanitize_input( $_POST['residentID']);
+        $file = sanitize_input($_FILES['residentImage']);  
+        $fileName = sanitize_input ($_FILES['residentImage']['name']);
+        $fileTmpName = sanitize_input ($_FILES['residentImage']['tmp_name']);
+        $fileSize = sanitize_input ($_FILES['residentImage']['size']);
+        
+        $fileType = sanitize_input ($_FILES['residentImage']['type']);
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+        $fileDestination = "/resources/images/residentimage" . $fileNameNew;
+        move_uploaded_file($fileTmpName, $fileDestination);
 
-        $update_residents = $DB->prepare("UPDATE resident SET residentFName = ?, residentMName = ?, residentLName = ?, residentAge = ?, residentCivilStatus = ?, residentGender = ?, residentZoneNumber = ?, residentBdate = ?, residentContactNumber = ?, residentOccupation = ? WHERE residentID = ?");
+
+        $update_residents = $DB->prepare("UPDATE resident SET residentFName = ?, residentMName = ?, residentLName = ?, residentAge = ?, residentCivilStatus = ?, residentGender = ?, residentZoneNumber = ?, residentBdate = ?, residentContactNumber = ?, residentOccupation = ? residentImage = ? WHERE residentID = ?");
 
         try {
             $DB->beginTransaction();
-            if( $update_residents->execute( [$residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentBdate, $residentContactNumber, $residentOccupation, $residentID] ) ) {
+            if( $update_residents->execute( [$residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentBdate, $residentContactNumber, $residentOccupation, $file, $residentID] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Resident successfully updated";
                 $_SESSION['messagetype'] = "success";
@@ -42,7 +54,7 @@
 
 
 
-
+ error_reporting(0);
 
  if ( isset($_POST['add-residents']) ) {
 
@@ -57,12 +69,17 @@
         $residentBdate = sanitize_input($_POST['residentBdate'] );
         $residentContactNumber = sanitize_input($_POST['residentContactNumber'] ); 
         $residentOccupation = sanitize_input($_POST['residentOccupation'] );
+        $image = sanitize_input($_FILES['residentImage']['tmp_name']);
+        $imagename = sanitize_input($_FILES['residentImage']['name']);
 
-        $update_residents = $DB->prepare("INSERT INTO resident ( user_id, residentFName, residentMName, residentLName, residentAge, residentCivilStatus, residentGender, residentZoneNumber, residentBdate, residentContactNumber, residentOccupation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $targetpath = "resources/images/resident_image/".$imagename;
+        move_uploaded_file($image, $targetpath);
+        
+        $update_residents = $DB->prepare("INSERT INTO resident ( user_id, residentFName, residentMName, residentLName, residentAge, residentCivilStatus, residentGender, residentZoneNumber, residentBdate, residentContactNumber, residentOccupation, residentImage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         try {
             $DB->beginTransaction();
-            if( $update_residents->execute( [$user_id, $residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentBdate, $residentContactNumber, $residentOccupation] ) ) {
+            if( $update_residents->execute( [$user_id, $residentFName, $residentMName, $residentLName, $residentAge, $residentCivilStatus, $residentGender, $residentZoneNumber, $residentBdate, $residentContactNumber, $residentOccupation, $imagename] ) ) {
                 $DB->commit();
                 $_SESSION['message'] = "Resident successfully added";
                 $_SESSION['messagetype'] = "success";

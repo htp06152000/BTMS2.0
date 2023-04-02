@@ -95,7 +95,7 @@ if ( isset($_POST['track']) ) {
 					$DB->beginTransaction();
 					if( $update_transactions->execute( [$requester, $tod, $business_name, $business_address, $type_of_business, $pickupdate, $status, $purpose, $dateRecorded, $amount, $trackingnumber] ) ) {
 						$DB->commit();
-						$_SESSION['message'] = "Request successfully submitted";
+						$_SESSION['message'] = "Request ";
 						$_SESSION['messagetype'] = "success";
 					} else {
 						$DB->rollback();

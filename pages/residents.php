@@ -15,6 +15,8 @@ $get_residents->execute([ $_GET['edit'] ]);  ?>
 
 <?php if ($get_residents && $get_residents->rowCount() > 0) :
         $residents = $get_residents->fetch(); ?>
+
+
     <form method="POST" class="row py-5" style="margin-left: 260px; margin-right: 20px">
 
     <div class="row g-3 mb-4">
@@ -199,6 +201,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                                     <table id="myTable" class="table table-hover table-striped table-bordered">
                                         <thead>
                                             <tr class="table-sm text-center">
+                                                <th class="text-center">Photo</th>
                                                 <th class="text-center">Last name</th>
                                                 <th class="text-center">First name</th>
                                                 <th class="text-center">Middle name</th>
@@ -212,7 +215,8 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                                         <tbody>
                                             <?php $resident = $DB->query("SELECT * FROM resident ORDER BY residentLName ASC");
                                                 foreach ($resident as $residents) : ?>
-                                                    <tr class="table-sm overflow-auto">
+                                                    <tr class="table-sm overflow-auto align-middle">
+                                                        <td class="text-center"><img src="<?php echo "resources/images/resident_image/".$residents["residentImage"]; ?>" alt='' width="100px" height="100px"></td>
                                                         <td class="text-center"><?=$residents["residentLName"] ?></td>
                                                         <td class="text-center"><?=$residents["residentFName"] ?></td>
                                                         <td class="text-center"><?=$residents["residentMName"] ?></td>
@@ -221,8 +225,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                                                         <td class="text-center"><?=$residents["residentGender"] ?></td>
                                                         <td class="text-center"><?=$residents["residentZoneNumber"] ?></td>
                                                         <td class="text-center">
-                                                            <a href="<?=root_url('residents')?>?view=<?=$residents['residentID']?>" class="btn btn-sm btn-warning" title="View" ><i class="fas fa-eye"></i></a>
-                                                            <a href="<?=root_url('residents')?>?edit=<?=$residents['residentID']?>" class="btn btn-sm btn-primary" title="Edit">
+                                                            <a href="<?=root_url('residents')?>?edit=<?=$residents['residentID']?>" class="btn btn-sm btn-primary" title="View/Edit">
                                                                 <i class="fas fa-pencil-alt"></i>
                                                             </a>
                                                             <a href="#delete-items" class="btn btn-sm btn-danger" title="Delete" data-bs-toggle="modal" data-itemid=<?=$residents['residentID']?>>
@@ -246,7 +249,7 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
 
 
                         <!-- Modal -->
-                        <form method="POST" id="add-modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+                        <form method="POST" id="add-modal"  enctype="multipart/form-data" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                         <div class="modal-dialog modal-lg">
 
 
@@ -317,8 +320,12 @@ $get_residents->execute([ $_GET['view'] ]);  ?>
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="validationDefault01" class="form-label fw-bold">Contact Number:</label>
-                                        <input type="number" name="residentContactNumber" id="residentContactNumber" class="form-control" maxlength="25" required>
+                                        <label for="residentContactNumber" class="form-label fw-bold">Contact Number:</label>
+                                        <input type="tel" name="residentContactNumber" id="residentContactNumber" value="+639" class="form-control" maxlength="13" required><span class="error text-danger"><?php if (isset($has_error)) { echo "Invalid phone number"; } ?></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <label for="residentImage" class="form-label fw-bold">Resident Photo:</label>
+                                    <input type="file" accept="image/*" class="form-control" id="residentImage" name="residentImage" aria-describedby="" aria-label="Upload">
                                     </div>    
                              </div>
                             <div class="modal-footer">

@@ -3,7 +3,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <!-- Title ang login -->
-<div class="navbar fixed-top navbar-expand-lg bg-light navbar-light p-1 z-2">
+<div class="navbar fixed-top navbar-expand-lg bg-light navbar-light p-1 z-1">
         <div class="container">
                 <p class="navbar-brand text-dark mb-0 h1 animate__animated animate__fadeInDown animate__faster fw-bolder">
                         <img src="resources/images/calumpangs.jpg" alt="Logo"> Barangay Transaction Management System</p>
@@ -13,6 +13,10 @@
 </div>
 
 <!-- Navbar -->
+<button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+                  data-bs-target="#nav">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
 <nav id="nav" class="navbar fixed-top navbar-expand-lg bg-primary navbar-dark p-2 z-2" style="box-shadow: 0rem 0rem 0.5rem 0rem; margin-top:67px;"> 
         <div class="container">
                 <ul class="nav justify-content-start animate__animated animate__fadeInDown animate__faster">
@@ -114,7 +118,7 @@
 </section>
 
 <!-- track request -->
-<section class="bg-primary text-light p-3" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;">
+<section class="bg-primary text-light p-3">
         <div class="container">
                 <div class="d-md-flex justify-content-between align-items-center">
                         <h4 class="mb-3 mb-md-0 pe-1 text-start">Track</h4>
@@ -509,5 +513,28 @@
     </div>
     </div>
 </form>
+  <footer class="text-center bg-primary text-lg-start" style="background-color: #db6930;">
+    <div class="container d-flex  justify-content-center py-3">
+      <button type="button" class="btn btn-primary btn-sm btn-floating mx-2" style="background-color: #54456b;">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+      <button type="button" class="btn btn-primary btn-sm btn-floating mx-2" style="background-color: #54456b;">
+        <i class="fab fa-youtube"></i>
+      </button>
+      <button type="button" class="btn btn-primary btn-sm btn-floating mx-2" style="background-color: #54456b;">
+        <i class="fab fa-instagram"></i>
+      </button>
+      <button type="button" class="btn btn-primary btn-sm btn-floating mx-2" style="background-color: #54456b;">
+        <i class="fab fa-twitter"></i>
+      </button>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center bg-info text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-white" href="http://btms.infinityfreeapp.com//home">btms.infinityfreeapp.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
 
 
