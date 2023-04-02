@@ -21,6 +21,6 @@ if (isset($_GET['trackingnumber'])) {
         }
 }
 $trck = sanitize_input($_GET['trackingnumber']);
-redirect_to('Paid?trackingnumber='.$trck);
+redirect_to('paid?trackingnumber='.$trck);
 ?>
 
